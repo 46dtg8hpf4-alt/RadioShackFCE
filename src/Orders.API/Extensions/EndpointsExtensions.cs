@@ -23,7 +23,7 @@ namespace Orders.API.Extensions
 
                 if (orders == null)
                 {
-                    return Results.NotFound();
+                    throw new NotFoundException("ORD-001", "La orden no fue encontrada");
                 }
 
                 return Results.Ok(orders);
@@ -34,12 +34,12 @@ namespace Orders.API.Extensions
             {
                 if (req.Items == null || !req.Items.Any())
                 {
-                    throw new BusinessRuleException("ORD-002", "Los datos de la orden son inválidos");
+                    throw new ValidationException("ORD-002", "Los datos de la orden son inválidos");
                 }
 
                 if (req.Items.Any(item => item.Cantidad <= 0))
                 {
-                    throw new BusinessRuleException("ORD-002", "Los datos de la orden son inválidos");
+                    throw new ValidationException ("ORD-002", "Los datos de la orden son inválidos");
                 }
 
                 decimal precioSimulado = 1500.00m; //Esto es para probarlo en swagger y que me de un total
@@ -76,12 +76,12 @@ namespace Orders.API.Extensions
                 // esto lo tengo que cambiar para cuando este lo de exception handlers.
                 if (ordenExistente == null)
                 {
-                    return Results.NotFound(new { message = "Orden no encontrada" });
+                    throw new NotFoundException("ORD-001", "La orden no fue encontrada");
                 }
 
                 if (ordenExistente.Estado == "Entregada" && req.Estado == "Pendiente")
                 {
-                    return Results.Conflict(new { message = "Una orden en estado 'Entregada' no puede volver a 'Pendiente'" });
+                    throw new NotFoundException("ORD-006", "Una orden en estado 'Entregada' no puede volver a 'Pendiente'.");
                 }
 
                 await repo.UpdateStatusAsync(id, req.Estado);

@@ -1,4 +1,5 @@
 using Orders.API.Data;
+using Orders.API.ExceptionHandlers;
 using Orders.API.Exceptions;
 using Orders.API.Extensions;
 using Serilog;
@@ -21,10 +22,10 @@ public partial class Program
         //base de datos
         builder.Services.AddScoped<OrderRepository>();
 
-        //builder.Services.AddExceptionHandler<BadRequestExceptionHandler>();
-
-        //builder.Services.AddExceptionHandler<BusinessRuleExceptionHandler>();
-
+        builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
+        builder.Services.AddExceptionHandler<NotFoundExceptionHandler>();
+        builder.Services.AddExceptionHandler<BusinessRuleExceptionHandler>();
+        builder.Services.AddExceptionHandler<GlobalExceptionHandler>();  
         builder.Services.AddProblemDetails();
 
         var app = builder.Build();
