@@ -4,7 +4,7 @@ namespace Products.API.Services
 {
     public class ProductService
     {
-        // Lista global de productos
+        // Simulación de base de datos en memoria
         private List<Product> products;
 
         // Constructor
