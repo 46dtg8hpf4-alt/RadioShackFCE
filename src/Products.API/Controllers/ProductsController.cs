@@ -9,7 +9,12 @@ namespace Products.API.Controllers
     public class ProductsController : ControllerBase
     {
         // Crear objeto service
-        ProductService productService = new ProductService();
+        private ProductService productService;
+
+        public ProductsController(ProductService productServiceFromProgram)
+        {
+            productService = productServiceFromProgram;
+        }
 
         // GET ALL PRODUCTS
         [HttpGet]
