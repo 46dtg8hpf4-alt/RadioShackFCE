@@ -23,4 +23,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.1.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ExceptionsHandlers\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="logs\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
