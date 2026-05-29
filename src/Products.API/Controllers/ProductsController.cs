@@ -22,6 +22,7 @@ namespace Products.API.Controllers
         [HttpGet]
         public ActionResult<List<Product>> GetProducts()
         {
+            
             // Pedir lista al service
             List<Product> products = productService.GetProducts();
 

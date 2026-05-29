@@ -1,1 +1,0 @@
-// Capturan excepciones y devuelven respuestas HTTP
