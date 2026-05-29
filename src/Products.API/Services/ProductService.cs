@@ -1,6 +1,7 @@
 // Contiene la lógica del negocio, asi controller no hace todo
 
 
+using Products.API.Exceptions;
 using Products.API.Models;
 
 namespace Products.API.Services
@@ -74,6 +75,15 @@ namespace Products.API.Services
         // CREATE PRODUCT
         public void CreateProduct(Product newProduct)
         {
+            foreach (Product product in products)
+            {
+                if (product.Nombre == newProduct.Nombre &&
+                    product.Categoria == newProduct.Categoria)
+                {
+                    throw new BusinessRuleException("PRD-003", "Ya existe un producto con ese nombre en la categoría.");
+                }
+            }
+
             products.Add(newProduct);
         }
 
