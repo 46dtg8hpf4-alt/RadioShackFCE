@@ -45,7 +45,48 @@ namespace Users.API.Services
 
         public async Task<UserResponseDTO> LoginAsync(LoginRequestDTO request)
         {
-            return new UserResponseDTO();
+            var user = _usersDb.FirstOrDefault(u => u.Email.Equals(request.Email, StringComparison.OrdinalIgnoreCase));
+
+            if (user == null)
+            {
+                throw new BusinessRuleException("USR-003", "Credenciales incorrectas."); 
+            }
+
+            if (!user.Activo && user.IntentosFallidos >= 3)
+            {
+                throw new BusinessRuleException("USR-004", "Su cuenta fue bloqueada por superar el máximo de intentos fallidos. Contacte a soporte."); 
+            }
+            else if (!user.Activo)
+            {
+                throw new BusinessRuleException("USR-005", "Su cuenta fue suspendida por razones de seguridad. Contacte a soporte."); 
+            }
+
+            string hashedInputPassword = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(request.Password));
+
+            if (user.PasswordHash != hashedInputPassword)
+            {
+                user.IntentosFallidos++; 
+
+                if (user.IntentosFallidos >= 3)
+                {
+                    user.Activo = false;
+                    throw new BusinessRuleException("USR-004", "Su cuenta fue bloqueada por superar el máximo de intentos fallidos. Contacte a soporte."); 
+                }
+
+                throw new BusinessRuleException("USR-003", "Credenciales incorrectas."); 
+            }
+
+            user.IntentosFallidos = 0; 
+
+            return new UserResponseDTO 
+            {
+                Id = user.Id,
+                Nombre = user.Nombre,
+                Apellido = user.Apellido,
+                Email = user.Email,
+                FechaRegistro = user.FechaRegistro,
+                Activo = user.Activo
+            };
         }
     }
 }

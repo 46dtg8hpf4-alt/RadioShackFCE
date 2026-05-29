@@ -9,7 +9,7 @@
 
         public string Email { get; set; } = string.Empty;
 
-        // Contraseña encriptada
+ 
         public string PasswordHash { get; set; } = string.Empty;
 
         public DateTime FechaRegistro { get; set; } = DateTime.Now;

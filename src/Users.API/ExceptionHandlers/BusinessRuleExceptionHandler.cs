@@ -6,8 +6,7 @@ namespace Users.API.ExceptionHandlers
     public class BusinessRuleExceptionHandler : IExceptionHandler
     {
         public async ValueTask<bool> TryHandleAsync(
-            HttpContext context,
-            Exception exception,
+            HttpContext context, Exception exception,
             CancellationToken cancellationToken)
         {
             if (exception is not BusinessRuleException ex)
@@ -15,16 +14,16 @@ namespace Users.API.ExceptionHandlers
 
             int statusCode = ex.ErrorCode switch
             {
-                "USR-001" => StatusCodes.Status409Conflict,       // Email ya registrado
-                "USR-002" => StatusCodes.Status400BadRequest,     // Datos inválidos
-                "USR-003" => StatusCodes.Status401Unauthorized,   // Credenciales incorrectas
-                "USR-004" or "USR-005" => StatusCodes.Status403Forbidden, // Bloqueado
+                "USR-001" => StatusCodes.Status409Conflict,       
+                "USR-002" => StatusCodes.Status400BadRequest,     
+                "USR-003" => StatusCodes.Status401Unauthorized,   
+                "USR-004" => StatusCodes.Status403Forbidden,
+                "USR-005" => StatusCodes.Status403Forbidden, 
                 _ => StatusCodes.Status400BadRequest
             };
 
             context.Response.StatusCode = statusCode;
 
-            // 3. Estructura pedida en la seccion 3.1 "Estructura de respuesta de error"
             var errorResponse = new
             {
                 type = "https://tools.ietf.org/html/rfc7231",
