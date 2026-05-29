@@ -1,3 +1,6 @@
+// Contiene la lógica del negocio, asi controller no hace todo
+
+
 using Products.API.Models;
 
 namespace Products.API.Services

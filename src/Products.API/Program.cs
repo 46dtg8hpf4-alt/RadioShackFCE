@@ -1,3 +1,5 @@
+// Configuraciñon general de la aplicación
+
 using Products.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);

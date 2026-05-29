@@ -1,0 +1,1 @@
+// Objetos para enviar y recibir datos, seguridad?

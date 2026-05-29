@@ -1,3 +1,5 @@
+// Recibe peticiones HTTP desde Swagger, EndPoints de la API, llama a Service y devuelve respuestas
+
 using Microsoft.AspNetCore.Mvc;
 using Products.API.Models;
 using Products.API.Services;

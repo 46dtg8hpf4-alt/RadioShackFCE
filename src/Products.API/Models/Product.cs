@@ -1,3 +1,5 @@
+// Acá se representan los modelos del sistema y validaciones para errores 
+
 using System.ComponentModel.DataAnnotations;
 
 namespace Products.API.Models
