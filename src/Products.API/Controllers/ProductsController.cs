@@ -22,7 +22,7 @@ namespace Products.API.Controllers
         [HttpGet]
         public ActionResult<List<Product>> GetProducts()
         {
-            
+
             // Pedir lista al service
             List<Product> products = productService.GetProducts();
 
@@ -40,7 +40,17 @@ namespace Products.API.Controllers
             // Si no existe
             if (foundProduct == null)
             {
-                return NotFound();
+                ApiError error = new ApiError();
+
+                error.Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4";
+                error.Title = "Not Found";
+                error.Status = 404;
+                error.Detail = "El recurso solicitado no fue encontrado.";
+                error.Instance = HttpContext.Request.Path;
+                error.ErrorCode = "PRD-001";
+                error.ErrorMessage = "Producto no encontrado.";
+
+                return NotFound(error);
             }
 
             // Si existe
@@ -68,7 +78,17 @@ namespace Products.API.Controllers
             // Si no existe
             if (foundProduct == null)
             {
-                return NotFound();
+                ApiError error = new ApiError();
+
+                error.Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4";
+                error.Title = "Not Found";
+                error.Status = 404;
+                error.Detail = "El recurso solicitado no fue encontrado.";
+                error.Instance = HttpContext.Request.Path;
+                error.ErrorCode = "PRD-001";
+                error.ErrorMessage = "Producto no encontrado.";
+
+                return NotFound(error);
             }
 
             // Devolver producto actualizado
@@ -85,7 +105,17 @@ namespace Products.API.Controllers
             // Si no existe
             if (deleted == false)
             {
-                return NotFound();
+                ApiError error = new ApiError();
+
+                error.Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4";
+                error.Title = "Not Found";
+                error.Status = 404;
+                error.Detail = "El recurso solicitado no fue encontrado.";
+                error.Instance = HttpContext.Request.Path;
+                error.ErrorCode = "PRD-001";
+                error.ErrorMessage = "Producto no encontrado.";
+
+                return NotFound(error);
             }
 
             // Eliminado correctamente

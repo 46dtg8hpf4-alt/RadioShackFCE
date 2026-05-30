@@ -59,7 +59,7 @@ namespace Products.API.Services
         }
 
         // GET PRODUCT BY ID
-        public Product GetProductById(int id)
+        public Product? GetProductById(int id)
         {
             foreach (Product product in products)
             {
@@ -88,7 +88,7 @@ namespace Products.API.Services
         }
 
         // UPDATE PRODUCT
-        public Product UpdateProduct(int id, Product updatedProduct)
+        public Product? UpdateProduct(int id, Product updatedProduct)
         {
             foreach (Product product in products)
             {
