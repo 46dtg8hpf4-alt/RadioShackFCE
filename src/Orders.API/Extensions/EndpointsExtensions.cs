@@ -73,7 +73,7 @@ namespace Orders.API.Extensions
             {
                 var ordenExistente = await repo.GetByIdAsync(id);
 
-                // esto lo tengo que cambiar para cuando este lo de exception handlers.
+               
                 if (ordenExistente == null)
                 {
                     throw new NotFoundException("ORD-001", "La orden no fue encontrada");

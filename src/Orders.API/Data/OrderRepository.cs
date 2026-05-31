@@ -30,36 +30,54 @@ public class OrderRepository
         """;
 
         var orderRows = await conn.QueryAsync<OrderRow>(sql, new { UsuarioId = usuarioId?.ToString() });
-        var orders = orderRows.Select(row => new Order
+
+        var orders = new List<Order>();
+
+        if (orderRows == null || !orderRows.Any())
         {
-            Id = Guid.Parse(row.Id),
-            usuarioId = Guid.Parse(row.UsuarioId),
-            Total = row.Total,
-            Estado = row.Estado,
-            FechaCreacion = row.FechaCreacion
-        }).ToList();
+            return orders;
+        }
+
+        foreach (var row in orderRows)
+        {
+            var nuevaOrder = new Order
+            {
+                Id = Guid.Parse(row.Id),
+                usuarioId = Guid.Parse(row.UsuarioId),
+                Total = row.Total,
+                Estado = row.Estado,
+                FechaCreacion = row.FechaCreacion
+            };
+
+            orders.Add(nuevaOrder);
+        }
 
         var itemsSql = """
-            SELECT order_id AS OrderId, producto_id AS ProductoId, 
-                   cantidad AS Cantidad, precio_unitario AS PrecioUnitario 
-            FROM order_items
+        SELECT order_id AS OrderId, producto_id AS ProductoId, 
+        cantidad AS Cantidad, precio_unitario AS PrecioUnitario 
+        FROM order_items
         """;
+
         var allItems = await conn.QueryAsync<OrderItemRow>(itemsSql);
 
         foreach (var order in orders)
         {
-            var itemsDeEstaOrden = allItems
-                .Where(item => item.OrderId == order.Id.ToString())
-                .Select(item => new OrderItem
+            foreach (var itemRow in allItems)
+            {
+                if (itemRow.OrderId == order.Id.ToString())
                 {
-                    ProductoId = Guid.Parse(item.ProductoId),
-                    Cantidad = item.Cantidad,
-                    PrecioUnitario = item.PrecioUnitario
-                });
+                    var nuevoItem = new OrderItem
+                    {
+                        ProductoId = Guid.Parse(itemRow.ProductoId),
+                        Cantidad = itemRow.Cantidad,
+                        PrecioUnitario = itemRow.PrecioUnitario
+                    };
 
-            order.Items.AddRange(itemsDeEstaOrden);
+                    order.Items.Add(nuevoItem);
+
+                }
+            }
         }
-
         return orders;
     }
 
@@ -94,18 +112,22 @@ public class OrderRepository
         """;
 
         var itemsRows = await conn.QueryAsync<OrderItemRow>(itemsSql, new { OrderId = id.ToString() });
-        var items = itemsRows.Select(item => new OrderItem
-        {
-            ProductoId = Guid.Parse(item.ProductoId),
-            Cantidad = item.Cantidad,
-            PrecioUnitario = item.PrecioUnitario
-        });
 
-        order.Items.AddRange(items);
+        foreach (var itemRow in itemsRows)
+        {
+            var nuevoItem = new OrderItem
+            {
+                ProductoId = Guid.Parse(itemRow.ProductoId),
+                Cantidad = itemRow.Cantidad,
+                PrecioUnitario = itemRow.PrecioUnitario
+            };
+
+            order.Items.Add(nuevoItem);
+        }
 
         return order;
     }
-
+        
     public async Task<Order> CreateAsync(Order order)
     {
         using var conn = CreateConnection();
@@ -120,6 +142,7 @@ public class OrderRepository
             UsuarioId = order.usuarioId.ToString(),
             order.Total,
             order.Estado,
+            //aca el ToString lleva "o" porque sino guarda la fecha de mi pc
             FechaCreacion = order.FechaCreacion.ToString("o")
         });
 

@@ -1,6 +1,5 @@
 using Orders.API.Data;
 using Orders.API.ExceptionHandlers;
-using Orders.API.Exceptions;
 using Orders.API.Extensions;
 using Serilog;
 
@@ -18,10 +17,10 @@ public partial class Program
         //Swagger
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        
-        //base de datos
-        builder.Services.AddScoped<OrderRepository>();
 
+        //base de datos
+
+        builder.Services.AddScoped<OrderRepository>();
         builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
         builder.Services.AddExceptionHandler<NotFoundExceptionHandler>();
         builder.Services.AddExceptionHandler<BusinessRuleExceptionHandler>();
