@@ -1,41 +1,71 @@
+// Configuraciñon general de la aplicación
+
+using Products.API.Services;
+using Products.API.ExceptionHandlers;
+using Microsoft.AspNetCore.Mvc;
+using Products.API.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// Services
+builder.Services.AddControllers()
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.InvalidModelStateResponseFactory = context =>
+        {
+            // Obtener mensajes de error
+            var validationErrors = context.ModelState.Values
+                .SelectMany(value => value.Errors);
+
+            string errors = "";
+
+            foreach (var errorItem in validationErrors)
+            {
+                errors += errorItem.ErrorMessage + "; ";
+            }
+
+            // Crear respuesta estándar
+            ApiError error = new ApiError();
+
+            error.Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1";
+            error.Title = "Bad Request";
+            error.Status = 400;
+            error.Detail = "Los datos enviados son inválidos.";
+            error.Instance = context.HttpContext.Request.Path;
+            error.ErrorCode = "PRD-002";
+            error.ErrorMessage = errors;
+
+            return new BadRequestObjectResult(error);
+        };
+    });
+
+builder.Services.AddSingleton<ProductService>(); //
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks();
+builder.Services.AddExceptionHandler<BusinessRuleExceptionHandler>();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Middleware
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.UseExceptionHandler();
+app.UseAuthorization();
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+app.MapHealthChecks("/health");
+app.MapHealthChecks("/health/live");
+app.MapHealthChecks("/health/ready");
+
+app.MapControllers();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

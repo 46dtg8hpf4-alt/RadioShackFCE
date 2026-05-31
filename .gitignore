@@ -2,5 +2,5 @@ bin/
 obj/
 .vscode/
 .DS_Store
-*.user
 /.vs
+/src/Orders.API/orders.db
