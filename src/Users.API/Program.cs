@@ -1,41 +1,52 @@
+using Users.API.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddControllers()
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.InvalidModelStateResponseFactory = context =>
+        {
+            var errors = context.ModelState.Values
+                .SelectMany(v => v.Errors)
+                .Select(e => e.ErrorMessage);
+
+            var errorMessageDetallado = string.Join("; ", errors);
+
+            var errorResponse = new
+            {
+                type = "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                title = "Bad Request",
+                status = StatusCodes.Status400BadRequest,
+                detail = "Los datos provistos no pasaron las validaciones del sistema.",
+                instance = context.HttpContext.Request.Path.Value,
+                errorCode = "USR-002",
+                errorMessage = errorMessageDetallado
+            };
+
+            return new Microsoft.AspNetCore.Mvc.BadRequestObjectResult(errorResponse)
+            {
+                ContentTypes = { "application/problem+json" }
+            };
+        };
+    });
+builder.Services.AddExceptionHandler<Users.API.ExceptionHandlers.BusinessRuleExceptionHandler>();
+builder.Services.AddProblemDetails();
+builder.Services.AddSingleton<IUserService, UserService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();  
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+app.UseExceptionHandler();
+app.MapControllers();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
