@@ -1,30 +1,31 @@
-// Configuraciñon general de la aplicación
+// Configuración general de la aplicación
 
 using Products.API.Services;
 using Products.API.ExceptionHandlers;
 using Microsoft.AspNetCore.Mvc;
 using Products.API.Models;
+using Products.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Services
+// Configuración de Controllers y validaciones
 builder.Services.AddControllers()
     .ConfigureApiBehaviorOptions(options =>
     {
         options.InvalidModelStateResponseFactory = context =>
         {
-            // Obtener mensajes de error
-            var validationErrors = context.ModelState.Values
-                .SelectMany(value => value.Errors);
-
+            // Acumular mensajes de error de validación
             string errors = "";
 
-            foreach (var errorItem in validationErrors)
+            foreach (var modelState in context.ModelState.Values)
             {
-                errors += errorItem.ErrorMessage + "; ";
+                foreach (var errorItem in modelState.Errors)
+                {
+                    errors += errorItem.ErrorMessage + "; ";
+                }
             }
 
-            // Crear respuesta estándar
+            // Crear respuesta estándar de error
             ApiError error = new ApiError();
 
             error.Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1";
@@ -39,33 +40,51 @@ builder.Services.AddControllers()
         };
     });
 
-builder.Services.AddSingleton<ProductService>(); //
+// Registrar ProductService como Singleton
+builder.Services.AddSingleton<ProductService>();
+builder.Services.AddSingleton<ProductRepository>();
+builder.Services.AddSingleton<DatabaseInitializer>();
 
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Health Checks
 builder.Services.AddHealthChecks();
+
+// Exception Handlers
 builder.Services.AddExceptionHandler<BusinessRuleExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
+// Problem Details para errores HTTP
 builder.Services.AddProblemDetails();
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider
+        .GetRequiredService<DatabaseInitializer>()
+        .Initialize();
+}
 
-// Middleware
+// Swagger solamente en desarrollo
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// app.UseHttpsRedirection();
-
+// Middleware de manejo global de excepciones
 app.UseExceptionHandler();
+
 app.UseAuthorization();
 
+// Endpoints de Health Checks
 app.MapHealthChecks("/health");
 app.MapHealthChecks("/health/live");
 app.MapHealthChecks("/health/ready");
 
+// Endpoints de Controllers
 app.MapControllers();
 
 app.Run();
