@@ -7,6 +7,7 @@ using Products.API.Models;
 using Products.API.Data;
 using Products.API.Extensions;
 using Serilog;
+using Products.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddAppLogging();
@@ -63,6 +64,7 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 var app = builder.Build();
+app.UseMiddleware<CorrelationIdMiddleware>();
 app.UseSerilogRequestLogging();
 
 using (var scope = app.Services.CreateScope())
