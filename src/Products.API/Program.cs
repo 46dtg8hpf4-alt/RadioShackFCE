@@ -5,8 +5,11 @@ using Products.API.ExceptionHandlers;
 using Microsoft.AspNetCore.Mvc;
 using Products.API.Models;
 using Products.API.Data;
+using Products.API.Extensions;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.AddAppLogging();
 
 // Configuración de Controllers y validaciones
 builder.Services.AddControllers()
@@ -60,6 +63,8 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 var app = builder.Build();
+app.UseSerilogRequestLogging();
+
 using (var scope = app.Services.CreateScope())
 {
     scope.ServiceProvider
