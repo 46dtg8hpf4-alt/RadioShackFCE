@@ -199,4 +199,28 @@ public class OrderRepository
         public int Cantidad { get; set; }
         public decimal PrecioUnitario { get; set; }
     }
+
+    // Verifica si existe alguna orden pendiente que contenga el producto indicado.
+        
+        public async Task<bool> ProductHasActiveOrders(Guid productId)
+    {
+        var orders = await GetAllAsync();
+
+        foreach (var order in orders)
+        {
+            if (order.Estado == "Pendiente")
+            {
+                foreach (var item in order.Items)
+                {
+                    if (item.ProductoId == productId)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
 }
+

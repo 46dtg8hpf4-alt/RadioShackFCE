@@ -1,0 +1,100 @@
+2026-06-07 20:38:40.522 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 7.0836 ms
+2026-06-07 20:38:40.525 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 8.5073 ms
+2026-06-07 20:38:40.515 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.7837 ms
+2026-06-07 20:38:40.522 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 6.7817 ms
+2026-06-07 20:38:40.511 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 40.5262 ms
+2026-06-07 20:38:40.522 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 7.2807 ms
+2026-06-07 20:38:41.273 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 81.6212 ms
+2026-06-07 20:38:59.409 -03:00 [INF] HTTP POST /api/Products responded 201 in 84.9053 ms
+2026-06-07 20:39:45.756 -03:00 [ERR] HTTP GET /api/Products responded 500 in 18.1303 ms
+2026-06-07 20:40:39.987 -03:00 [ERR] HTTP POST /api/Products responded 500 in 6.0817 ms
+2026-06-07 20:40:57.870 -03:00 [ERR] HTTP POST /api/Products responded 500 in 1.3030 ms
+2026-06-07 20:41:10.835 -03:00 [ERR] HTTP POST /api/Products responded 500 in 1.5311 ms
+2026-06-07 20:41:12.837 -03:00 [ERR] HTTP GET /api/Products responded 500 in 1.1629 ms
+2026-06-07 20:41:21.290 -03:00 [ERR] HTTP GET /api/Products responded 500 in 1.5001 ms
+2026-06-07 20:41:21.905 -03:00 [ERR] HTTP GET /api/Products responded 500 in 0.9907 ms
+2026-06-07 20:41:22.022 -03:00 [ERR] HTTP GET /api/Products responded 500 in 0.9755 ms
+2026-06-07 20:41:24.344 -03:00 [ERR] HTTP GET /api/Products responded 500 in 1.2061 ms
+2026-06-07 20:41:27.542 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.8590 ms
+2026-06-07 20:41:27.563 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 0.6207 ms
+2026-06-07 20:41:27.566 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 0.0354 ms
+2026-06-07 20:41:27.566 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.3358 ms
+2026-06-07 20:41:27.567 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 0.0133 ms
+2026-06-07 20:41:27.568 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 0.0471 ms
+2026-06-07 20:41:27.624 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 4.3680 ms
+2026-06-07 20:41:30.547 -03:00 [ERR] HTTP GET /api/Products responded 500 in 0.9935 ms
+2026-06-07 20:48:42.789 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.3224 ms
+2026-06-07 20:48:43.196 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 0.2075 ms
+2026-06-07 20:48:43.200 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.5406 ms
+2026-06-07 20:48:43.201 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 0.0975 ms
+2026-06-07 20:48:43.201 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 0.0764 ms
+2026-06-07 20:48:43.205 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 0.0476 ms
+2026-06-07 20:48:43.317 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 4.4463 ms
+2026-06-07 20:48:50.133 -03:00 [ERR] HTTP GET /api/Products responded 500 in 5.8134 ms
+estrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2026-06-07 20:50:55.034 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 41.7138 ms
+2026-06-07 20:50:55.114 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.8175 ms
+2026-06-07 20:50:55.117 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 3.4898 ms
+2026-06-07 20:50:55.117 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 3.9526 ms
+2026-06-07 20:50:55.117 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 5.2837 ms
+2026-06-07 20:50:55.121 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 7.2527 ms
+2026-06-07 20:50:55.257 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 47.5240 ms
+2026-06-07 20:50:58.164 -03:00 [ERR] HTTP GET /api/Products responded 500 in 54.0507 ms
+2026-06-07 20:52:59.522 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 43.5567 ms
+2026-06-07 20:52:59.541 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 7.0364 ms
+2026-06-07 20:52:59.544 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 9.4418 ms
+2026-06-07 20:52:59.541 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 7.2313 ms
+2026-06-07 20:52:59.535 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 1.1392 ms
+2026-06-07 20:52:59.541 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 7.2620 ms
+2026-06-07 20:52:59.679 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 50.7082 ms
+2026-06-07 20:53:03.939 -03:00 [ERR] HTTP GET /api/Products responded 500 in 53.4227 ms
+2026-06-07 20:56:04.095 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 3.1458 ms
+2026-06-07 20:56:04.484 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 0.3231 ms
+2026-06-07 20:56:04.487 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.3008 ms
+2026-06-07 20:56:04.487 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 0.1390 ms
+2026-06-07 20:56:04.488 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 0.1227 ms
+2026-06-07 20:56:04.493 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 0.2122 ms
+2026-06-07 20:56:04.678 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 4.0684 ms
+2026-06-07 20:56:07.921 -03:00 [ERR] HTTP GET /api/Products responded 500 in 9.6490 ms
+2026-06-07 20:56:53.474 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 3.7012 ms
+2026-06-07 20:56:53.550 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 0.2665 ms
+2026-06-07 20:56:53.550 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 0.5028 ms
+2026-06-07 20:56:53.551 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 0.0350 ms
+2026-06-07 20:56:53.552 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 0.0842 ms
+2026-06-07 20:56:53.552 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.2554 ms
+2026-06-07 20:56:53.689 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 16.5394 ms
+2026-06-07 20:56:56.707 -03:00 [ERR] HTTP GET /api/Products responded 500 in 15.1156 ms
+r.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2026-06-07 20:58:55.745 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 46.7560 ms
+2026-06-07 20:58:55.825 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.4185 ms
+2026-06-07 20:58:55.829 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 4.5750 ms
+2026-06-07 20:58:55.829 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 4.2326 ms
+2026-06-07 20:58:55.829 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 4.7989 ms
+2026-06-07 20:58:55.834 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 7.2596 ms
+2026-06-07 20:58:55.982 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 56.8231 ms
+2026-06-07 20:58:59.576 -03:00 [INF] HTTP GET /api/Products responded 200 in 51.0228 ms

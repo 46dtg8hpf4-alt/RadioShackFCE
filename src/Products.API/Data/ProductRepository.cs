@@ -28,23 +28,59 @@ namespace Products.API.Data
         {
             using var conn = CreateConnection();
 
-            return await conn.QueryAsync<Product>("""
+            var rows = await conn.QueryAsync<ProductRow>("""
                 SELECT *
                 FROM Products
-                ORDER BY Id
+                ORDER BY Nombre
             """);
+
+            List<Product> products = new List<Product>();
+
+            foreach (var row in rows)
+            {
+                Product product = new Product();
+
+                product.Id = Guid.Parse(row.Id);
+                product.Nombre = row.Nombre;
+                product.Descripcion = row.Descripcion;
+                product.Precio = row.Precio;
+                product.Stock = row.Stock;
+                product.Categoria = row.Categoria;
+                product.Marca = row.Marca;
+
+                products.Add(product);
+            }
+
+            return products;
         }
 
         // GET PRODUCT BY ID
-        public async Task<Product?> GetByIdAsync(int id)
+        public async Task<Product?> GetByIdAsync(Guid id)
         {
             using var conn = CreateConnection();
 
-            return await conn.QuerySingleOrDefaultAsync<Product>("""
+            var row = await conn.QuerySingleOrDefaultAsync<ProductRow>("""
                 SELECT *
                 FROM Products
                 WHERE Id = @id
             """, new { id });
+
+            if (row == null)
+            {
+                return null;
+            }
+
+            Product product = new Product();
+
+            product.Id = Guid.Parse(row.Id);
+            product.Nombre = row.Nombre;
+            product.Descripcion = row.Descripcion;
+            product.Precio = row.Precio;
+            product.Stock = row.Stock;
+            product.Categoria = row.Categoria;
+            product.Marca = row.Marca;
+
+            return product;
         }
 
         // CREATE PRODUCT
@@ -52,9 +88,12 @@ namespace Products.API.Data
         {
             using var conn = CreateConnection();
 
-            var id = await conn.ExecuteScalarAsync<int>("""
+            product.Id = Guid.NewGuid();
+
+            await conn.ExecuteAsync("""
                 INSERT INTO Products
                 (
+                    Id,
                     Nombre,
                     Descripcion,
                     Precio,
@@ -64,22 +103,21 @@ namespace Products.API.Data
                 )
                 VALUES
                 (
+                    @Id,
                     @Nombre,
                     @Descripcion,
                     @Precio,
                     @Stock,
                     @Categoria,
                     @Marca
-                );
-
-                SELECT last_insert_rowid();
+                )
             """, product);
 
-            return (await GetByIdAsync(id))!;
+            return product;
         }
 
         // UPDATE PRODUCT
-        public async Task<bool> UpdateAsync(int id, Product product)
+        public async Task<bool> UpdateAsync(Guid id, Product product)
         {
             using var conn = CreateConnection();
 
@@ -109,7 +147,7 @@ namespace Products.API.Data
         }
 
         // DELETE PRODUCT
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
             using var conn = CreateConnection();
 
@@ -119,6 +157,18 @@ namespace Products.API.Data
             """, new { id });
 
             return rows > 0;
+        }
+
+        // Clase auxiliar para leer filas de SQLite
+        private class ProductRow
+        {
+            public string Id { get; set; } = "";
+            public string Nombre { get; set; } = "";
+            public string Descripcion { get; set; } = "";
+            public decimal Precio { get; set; }
+            public int Stock { get; set; }
+            public string Categoria { get; set; } = "";
+            public string Marca { get; set; } = "";
         }
     }
 }

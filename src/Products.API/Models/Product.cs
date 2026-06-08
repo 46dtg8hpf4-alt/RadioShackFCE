@@ -7,7 +7,8 @@ namespace Products.API.Models
     public class Product
     {
         // Id único del producto
-        public int Id { get; set; }
+
+        public Guid Id { get; set; }
 
         // Nombre del producto
         [Required]

@@ -24,7 +24,7 @@ namespace Products.API.Data
             connection.Execute("""
                 CREATE TABLE IF NOT EXISTS Products
                 (
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Id TEXT PRIMARY KEY,
                     Nombre TEXT NOT NULL,
                     Descripcion TEXT NOT NULL,
                     Precio REAL NOT NULL,

@@ -24,7 +24,7 @@ namespace Products.API.Services
         }
 
         // GET PRODUCT BY ID
-        public Product? GetProductById(int id)
+        public Product? GetProductById(Guid id)
         {
             return repository.GetByIdAsync(id).Result;
         }
@@ -50,7 +50,7 @@ namespace Products.API.Services
         }
 
         // UPDATE PRODUCT
-        public Product? UpdateProduct(int id, Product updatedProduct)
+        public Product? UpdateProduct(Guid id, Product updatedProduct)
         {
             Product? existingProduct =
                 repository.GetByIdAsync(id).Result;
@@ -66,7 +66,7 @@ namespace Products.API.Services
         }
 
         // DELETE PRODUCT
-        public bool DeleteProduct(int id)
+        public bool DeleteProduct(Guid id)
         {
             Product? existingProduct =
                 repository.GetByIdAsync(id).Result;

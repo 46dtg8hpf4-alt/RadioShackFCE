@@ -8,6 +8,7 @@ using Products.API.Data;
 using Products.API.Extensions;
 using Serilog;
 using Products.API.Middleware;
+using Products.API.Clients;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddAppLogging();
@@ -48,6 +49,9 @@ builder.Services.AddControllers()
 builder.Services.AddSingleton<ProductService>();
 builder.Services.AddSingleton<ProductRepository>();
 builder.Services.AddSingleton<DatabaseInitializer>();
+
+// HttpClient para comunicarse con Orders API de Ivan
+builder.Services.AddHttpClient<OrdersApiClient>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
