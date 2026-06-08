@@ -30,3 +30,10 @@
 2026-06-08 15:59:23.895 -03:00 [INF] Received HTTP response headers after 3.2518ms - 200
 2026-06-08 15:59:23.896 -03:00 [INF] End processing HTTP request after 4.4855ms - 200
 2026-06-08 15:59:23.897 -03:00 [INF] HTTP DELETE /api/Products/984c808d-3a8f-4b85-ba5d-f9ace745d3af responded 409 in 6.5262 ms
+2026-06-08 16:18:07.110 -03:00 [INF] HTTP GET /swagger/index.html responded 304 in 34.9813 ms
+2026-06-08 16:18:07.777 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.7846 ms
+2026-06-08 16:18:07.782 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 8.0511 ms
+2026-06-08 16:18:07.782 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 5.6091 ms
+2026-06-08 16:18:07.784 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 6.8852 ms
+2026-06-08 16:18:07.789 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 10.6187 ms
+2026-06-08 16:18:08.037 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 66.6966 ms
