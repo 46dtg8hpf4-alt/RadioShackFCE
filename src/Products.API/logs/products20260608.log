@@ -1,0 +1,32 @@
+2026-06-08 15:37:19.771 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 11.1969 ms
+2026-06-08 15:37:19.771 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 11.2451 ms
+2026-06-08 15:37:19.762 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 1.6393 ms
+2026-06-08 15:37:19.771 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 11.3121 ms
+2026-06-08 15:37:19.774 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 14.3693 ms
+2026-06-08 15:37:19.756 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 44.3033 ms
+2026-06-08 15:37:20.141 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 110.0022 ms
+2026-06-08 15:37:29.169 -03:00 [INF] HTTP GET /api/Products responded 200 in 64.6861 ms
+2026-06-08 15:45:58.270 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 5.0262 ms
+2026-06-08 15:45:58.273 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 6.7452 ms
+2026-06-08 15:45:58.270 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 5.6632 ms
+2026-06-08 15:45:58.266 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.8330 ms
+2026-06-08 15:45:58.244 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 42.4752 ms
+2026-06-08 15:45:58.270 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 5.2466 ms
+2026-06-08 15:45:58.484 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 63.9815 ms
+2026-06-08 15:46:02.006 -03:00 [INF] HTTP GET /api/Products responded 200 in 56.1080 ms
+2026-06-08 15:46:45.510 -03:00 [INF] Start processing HTTP request GET http://localhost:5232/api/orders/product/144aa95a-11ca-4cc4-ab82-f4fa96aee3da
+2026-06-08 15:46:45.512 -03:00 [INF] Sending HTTP request GET http://localhost:5232/api/orders/product/144aa95a-11ca-4cc4-ab82-f4fa96aee3da
+2026-06-08 15:46:45.546 -03:00 [INF] Received HTTP response headers after 32.8433ms - 200
+2026-06-08 15:46:45.546 -03:00 [INF] End processing HTTP request after 43.1555ms - 200
+2026-06-08 15:46:45.550 -03:00 [INF] HTTP DELETE /api/Products/144aa95a-11ca-4cc4-ab82-f4fa96aee3da responded 204 in 84.4873 ms
+2026-06-08 15:47:50.410 -03:00 [INF] HTTP POST /api/Products responded 201 in 46.1820 ms
+2026-06-08 15:59:02.812 -03:00 [INF] Start processing HTTP request GET http://localhost:5232/api/orders/product/984c808d-3a8f-4b85-ba5d-f9ace745d3af
+2026-06-08 15:59:02.813 -03:00 [INF] Sending HTTP request GET http://localhost:5232/api/orders/product/984c808d-3a8f-4b85-ba5d-f9ace745d3af
+2026-06-08 15:59:02.820 -03:00 [INF] Received HTTP response headers after 6.8154ms - 200
+2026-06-08 15:59:02.820 -03:00 [INF] End processing HTTP request after 9.0985ms - 200
+2026-06-08 15:59:02.833 -03:00 [INF] HTTP DELETE /api/Products/984c808d-3a8f-4b85-ba5d-f9ace745d3af responded 409 in 32.4879 ms
+2026-06-08 15:59:23.891 -03:00 [INF] Start processing HTTP request GET http://localhost:5232/api/orders/product/984c808d-3a8f-4b85-ba5d-f9ace745d3af
+2026-06-08 15:59:23.892 -03:00 [INF] Sending HTTP request GET http://localhost:5232/api/orders/product/984c808d-3a8f-4b85-ba5d-f9ace745d3af
+2026-06-08 15:59:23.895 -03:00 [INF] Received HTTP response headers after 3.2518ms - 200
+2026-06-08 15:59:23.896 -03:00 [INF] End processing HTTP request after 4.4855ms - 200
+2026-06-08 15:59:23.897 -03:00 [INF] HTTP DELETE /api/Products/984c808d-3a8f-4b85-ba5d-f9ace745d3af responded 409 in 6.5262 ms

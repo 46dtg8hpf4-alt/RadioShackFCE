@@ -3,6 +3,7 @@
 using Products.API.Data;
 using Products.API.Exceptions;
 using Products.API.Models;
+using Products.API.Clients;
 
 namespace Products.API.Services
 {
@@ -11,10 +12,16 @@ namespace Products.API.Services
         // Acceso a la base de datos
         private readonly ProductRepository repository;
 
+        private readonly OrdersApiClient ordersApiClient;
         // Constructor
-        public ProductService(ProductRepository repositoryFromProgram)
+
+        public ProductService(
+            ProductRepository repositoryFromProgram,
+            OrdersApiClient ordersApiClientFromProgram)
+
         {
             repository = repositoryFromProgram;
+            ordersApiClient = ordersApiClientFromProgram;
         }
 
         // GET ALL PRODUCTS
@@ -74,6 +81,16 @@ namespace Products.API.Services
             if (existingProduct == null)
             {
                 return false;
+            }
+
+            bool hasActiveOrders =
+                ordersApiClient.ProductHasActiveOrders(id).Result;
+
+            if (hasActiveOrders)
+            {
+                throw new BusinessRuleException(
+                    "PRD-004",
+                    "No se puede eliminar un producto con órdenes activas.");
             }
 
             return repository.DeleteAsync(id).Result;

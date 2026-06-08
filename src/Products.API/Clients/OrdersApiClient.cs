@@ -9,13 +9,24 @@ namespace Products.API.Clients
             _httpClient = httpClient;
         }
 
-        public async Task<bool> ProductHasActiveOrders(int productId)
+        public async Task<bool> ProductHasActiveOrders(Guid productId)
         {
             HttpResponseMessage response =
                 await _httpClient.GetAsync(
-                    $"http://localhost:5000/api/orders/product/{productId}");
+                    $"http://localhost:5232/api/orders/product/{productId}");
 
-            return response.IsSuccessStatusCode;
+            if (!response.IsSuccessStatusCode)
+            {
+
+                return false;
+
+            }
+            
+            string content =
+
+                await response.Content.ReadAsStringAsync();
+
+            return bool.Parse(content);
         }
     }
 }
