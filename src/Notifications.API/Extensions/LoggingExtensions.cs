@@ -1,7 +1,7 @@
 using Serilog;
 using Serilog.Events;
 
-namespace Products.API.Extensions
+namespace Notifications.API.Extensions
 {
     public static class LoggingExtensions
     {

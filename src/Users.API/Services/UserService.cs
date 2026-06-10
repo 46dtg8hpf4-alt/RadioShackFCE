@@ -88,5 +88,25 @@ namespace Users.API.Services
                 Activo = user.Activo
             };
         }
+
+        public async Task<UserResponseDTO?> GetByIdAsync(Guid id)
+        {
+            var user = _usersDb.FirstOrDefault(u => u.Id == id);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return new UserResponseDTO
+            {
+                Id = user.Id,
+                Nombre = user.Nombre,
+                Apellido = user.Apellido,
+                Email = user.Email,
+                FechaRegistro = user.FechaRegistro,
+                Activo = user.Activo
+            };
+        }
     }
 }

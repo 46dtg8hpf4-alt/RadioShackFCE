@@ -1,9 +1,9 @@
 // Capturan excepciones y devuelven respuestas HTTP
 
 using Microsoft.AspNetCore.Diagnostics;
-using Products.API.Models;
+using Notifications.API.Models;
 
-namespace Products.API.ExceptionHandlers
+namespace Notifications.API.ExceptionHandlers
 {
     public class GlobalExceptionHandler : IExceptionHandler
     {

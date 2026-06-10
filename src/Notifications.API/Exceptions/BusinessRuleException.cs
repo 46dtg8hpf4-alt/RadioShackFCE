@@ -1,4 +1,4 @@
-namespace Products.API.Exceptions
+namespace Notifications.API.Exceptions
 {
     public class BusinessRuleException : Exception
     {

@@ -1,9 +1,8 @@
 using Dapper;
 using Microsoft.Data.Sqlite;
 
-namespace Products.API.Data
+namespace Notifications.API.Data
 {
-    // Crea la base de datos y la tabla Products si no existen
     public class DatabaseInitializer
     {
         private readonly IConfiguration _config;
@@ -17,20 +16,20 @@ namespace Products.API.Data
         {
             string connectionString =
                 _config.GetConnectionString("DefaultConnection")
-                ?? "Data Source=products.db";
+                ?? "Data Source=notifications.db";
 
-            using var connection = new SqliteConnection(connectionString);
+            using var connection =
+                new SqliteConnection(connectionString);
 
             connection.Execute("""
-                CREATE TABLE IF NOT EXISTS Products
+                CREATE TABLE IF NOT EXISTS Notifications
                 (
                     Id TEXT PRIMARY KEY,
-                    Nombre TEXT NOT NULL,
-                    Descripcion TEXT NOT NULL,
-                    Precio REAL NOT NULL,
-                    Stock INTEGER NOT NULL,
-                    Categoria TEXT NOT NULL,
-                    Marca TEXT NOT NULL
+                    UsuarioId TEXT NOT NULL,
+                    Mensaje TEXT NOT NULL,
+                    Tipo TEXT NOT NULL,
+                    Estado TEXT NOT NULL,
+                    FechaEnvio TEXT NOT NULL
                 );
             """);
         }

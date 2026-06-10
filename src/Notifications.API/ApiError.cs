@@ -1,6 +1,6 @@
 // Clase utilizada para devolver errores con un formato estándar definido por el TP
 
-namespace Products.API.Models
+namespace Notifications.API.Models
 {
     public class ApiError
     {

@@ -1,6 +1,6 @@
 // Errores personalizados
 
-namespace Products.API.Exceptions
+namespace Notifications.API.Exceptions
 {
     public class ProductNotFoundException : Exception
     {
