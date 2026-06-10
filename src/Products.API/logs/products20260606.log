@@ -1,0 +1,26 @@
+2026-06-06 21:27:18.059 -03:00 [INF] Products API iniciada correctamente
+2026-06-06 21:31:36.035 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 4.5710 ms
+2026-06-06 21:31:36.036 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 4.9480 ms
+2026-06-06 21:31:36.032 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.9100 ms
+2026-06-06 21:31:36.006 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 35.4865 ms
+2026-06-06 21:31:36.036 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 4.0512 ms
+2026-06-06 21:31:36.040 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 8.2512 ms
+2026-06-06 21:31:36.246 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 47.2811 ms
+2026-06-06 21:31:47.207 -03:00 [INF] HTTP POST /api/Products responded 409 in 63.1865 ms
+2026-06-06 21:31:58.205 -03:00 [INF] HTTP PUT /api/Products/6 responded 404 in 28.4005 ms
+2026-06-06 21:50:48.445 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 43.5406 ms
+2026-06-06 21:50:48.949 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.5092 ms
+2026-06-06 21:50:48.955 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 7.2774 ms
+2026-06-06 21:50:48.955 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 5.7082 ms
+2026-06-06 21:50:48.955 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 6.1992 ms
+2026-06-06 21:50:48.961 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 11.6126 ms
+2026-06-06 21:50:49.156 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 57.9463 ms
+2026-06-06 21:50:51.933 -03:00 [INF] HTTP GET /api/Products responded 200 in 49.4358 ms
+2026-06-06 21:53:29.017 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 37.4898 ms
+2026-06-06 21:53:29.041 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 5.1461 ms
+2026-06-06 21:53:29.037 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.9878 ms
+2026-06-06 21:53:29.041 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 5.5820 ms
+2026-06-06 21:53:29.040 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 4.7224 ms
+2026-06-06 21:53:29.044 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 7.5679 ms
+2026-06-06 21:53:29.183 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 52.9809 ms
+2026-06-06 21:53:34.842 -03:00 [INF] HTTP GET /api/Products responded 200 in 40.5115 ms

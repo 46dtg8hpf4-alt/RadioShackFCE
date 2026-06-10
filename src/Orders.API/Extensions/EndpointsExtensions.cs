@@ -29,6 +29,18 @@ namespace Orders.API.Extensions
                 return Results.Ok(orders);
             });
 
+            // Endpoint para verificar si un producto tiene órdenes activas.
+            // Será utilizado por Products API antes de permitir eliminar un producto (PRD-004).        
+            app.MapGet(
+                "/api/orders/product/{productId:guid}",
+                async (Guid productId, OrderRepository repo) =>
+            {
+                bool hasOrders =
+                    await repo.ProductHasActiveOrders(productId);
+
+                return Results.Ok(hasOrders);
+            });
+
             //Tercer endpoint para crear una orden con cantidad y calcula total(fijando un precio para su prueba).
             app.MapPost("/api/orders", async (CreateOrderRequest req, OrderRepository repo) =>
             {

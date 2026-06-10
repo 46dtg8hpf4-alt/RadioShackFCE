@@ -1,0 +1,104 @@
+2026-06-10 13:42:40.323 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 52.1701 ms
+2026-06-10 13:42:40.345 -03:00 [INF] HTTP GET /swagger/index.css responded 200 in 7.3832 ms
+2026-06-10 13:42:40.345 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 7.2982 ms
+2026-06-10 13:42:40.350 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 12.3020 ms
+2026-06-10 13:42:40.339 -03:00 [INF] HTTP GET /swagger/index.js responded 200 in 0.9847 ms
+2026-06-10 13:42:40.350 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 12.4436 ms
+2026-06-10 13:42:40.548 -03:00 [INF] HTTP GET /swagger/favicon-16x16.png responded 200 in 0.6894 ms
+2026-06-10 13:42:40.548 -03:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 0.9144 ms
+2026-06-10 13:42:40.589 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 61.0336 ms
+2026-06-10 13:46:07.498 -03:00 [INF] HTTP GET /swagger/index.html responded 304 in 4.4660 ms
+2026-06-10 13:46:07.516 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 0.2311 ms
+2026-06-10 13:46:07.518 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 0.0579 ms
+2026-06-10 13:46:07.519 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 0.0396 ms
+2026-06-10 13:46:07.519 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.2470 ms
+2026-06-10 13:46:07.520 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 0.1223 ms
+2026-06-10 13:46:07.682 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 15.7965 ms
+2026-06-10 13:46:19.982 -03:00 [INF] Start processing HTTP request GET http://localhost:5166/api/Users/11111111-1111-1111-1111-111111111111
+2026-06-10 13:46:19.984 -03:00 [INF] Sending HTTP request GET http://localhost:5166/api/Users/11111111-1111-1111-1111-111111111111
+2026-06-10 13:46:20.024 -03:00 [INF] HTTP request failed after 39.3347ms
+System.Net.Http.HttpRequestException: Connection refused (localhost:5166)
+ ---> System.Net.Sockets.SocketException (61): Connection refused
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.InjectNewHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.SocketsHttpHandler.<SendAsync>g__CreateHandlerAndSendAsync|115_0(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+2026-06-10 13:46:20.031 -03:00 [INF] HTTP request failed after 52.1946ms
+System.Net.Http.HttpRequestException: Connection refused (localhost:5166)
+ ---> System.Net.Sockets.SocketException (61): Connection refused
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.InjectNewHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.SocketsHttpHandler.<SendAsync>g__CreateHandlerAndSendAsync|115_0(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+2026-06-10 13:46:20.044 -03:00 [ERR] HTTP POST /api/Notifications/send responded 500 in 128.0069 ms
+2026-06-10 13:49:12.020 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 3.2919 ms
+2026-06-10 13:49:12.393 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 0.5716 ms
+2026-06-10 13:49:12.398 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.4548 ms
+2026-06-10 13:49:12.398 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 0.1250 ms
+2026-06-10 13:49:12.399 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 0.0319 ms
+2026-06-10 13:49:12.400 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 0.0717 ms
+2026-06-10 13:49:12.548 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 2.6491 ms
+2026-06-10 13:49:18.676 -03:00 [INF] Start processing HTTP request GET http://localhost:5166/api/Users/11111111-1111-1111-1111-111111111111
+2026-06-10 13:49:18.676 -03:00 [INF] Sending HTTP request GET http://localhost:5166/api/Users/11111111-1111-1111-1111-111111111111
+2026-06-10 13:49:18.775 -03:00 [INF] Received HTTP response headers after 96.8117ms - 404
+2026-06-10 13:49:18.775 -03:00 [INF] End processing HTTP request after 99.1361ms - 404
+2026-06-10 13:49:18.777 -03:00 [INF] HTTP POST /api/Notifications/send responded 409 in 104.8928 ms
+2026-06-10 13:50:40.928 -03:00 [INF] HTTP GET /favicon.ico responded 404 in 2.2530 ms
+2026-06-10 13:50:40.928 -03:00 [INF] HTTP GET /apple-touch-icon-precomposed.png responded 404 in 5.0239 ms
+2026-06-10 13:50:40.929 -03:00 [INF] HTTP GET /swagger/favicon-16x16.png responded 200 in 3.3685 ms
+2026-06-10 13:50:40.929 -03:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 2.9796 ms
+2026-06-10 13:50:40.928 -03:00 [INF] HTTP GET /apple-touch-icon.png responded 404 in 2.5074 ms
+2026-06-10 13:50:42.911 -03:00 [INF] HTTP GET /swagger/index.html responded 304 in 2.4855 ms
+2026-06-10 13:50:42.915 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 0.0717 ms
+2026-06-10 13:50:42.916 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.8889 ms
+2026-06-10 13:50:42.917 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 0.1374 ms
+2026-06-10 13:50:42.918 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 0.0441 ms
+2026-06-10 13:50:42.918 -03:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 304 in 0.0558 ms
+2026-06-10 13:50:42.919 -03:00 [INF] HTTP GET /swagger/favicon-16x16.png responded 304 in 0.0575 ms
+2026-06-10 13:50:42.921 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 0.0431 ms
+2026-06-10 13:50:43.080 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 4.7279 ms
+2026-06-10 13:51:19.723 -03:00 [INF] Start processing HTTP request GET http://localhost:5166/api/Users/3cd48736-d3f2-4ab8-ba79-54cda3bcdd0d
+2026-06-10 13:51:19.724 -03:00 [INF] Sending HTTP request GET http://localhost:5166/api/Users/3cd48736-d3f2-4ab8-ba79-54cda3bcdd0d
+2026-06-10 13:51:19.727 -03:00 [INF] Received HTTP response headers after 2.9799ms - 200
+2026-06-10 13:51:19.727 -03:00 [INF] End processing HTTP request after 4.5243ms - 200
+2026-06-10 13:51:19.728 -03:00 [INF] HTTP POST /api/Notifications/send responded 409 in 9.7905 ms
+2026-06-10 13:54:08.222 -03:00 [INF] Start processing HTTP request GET http://localhost:5166/api/Users/3cd48736-d3f2-4ab8-ba79-54cda3bcdd0d
+2026-06-10 13:54:08.223 -03:00 [INF] Sending HTTP request GET http://localhost:5166/api/Users/3cd48736-d3f2-4ab8-ba79-54cda3bcdd0d
+2026-06-10 13:54:08.231 -03:00 [INF] Received HTTP response headers after 8.5317ms - 200
+2026-06-10 13:54:08.232 -03:00 [INF] End processing HTTP request after 9.8742ms - 200
+2026-06-10 13:54:08.235 -03:00 [INF] HTTP POST /api/Notifications/send responded 409 in 17.0113 ms
+2026-06-10 13:54:59.835 -03:00 [INF] Start processing HTTP request GET http://localhost:5166/api/Users/3cd48736-d3f2-4ab8-ba79-54cda3bcdd0d
+2026-06-10 13:54:59.836 -03:00 [INF] Sending HTTP request GET http://localhost:5166/api/Users/3cd48736-d3f2-4ab8-ba79-54cda3bcdd0d
+2026-06-10 13:54:59.844 -03:00 [INF] Received HTTP response headers after 7.5952ms - 200
+2026-06-10 13:54:59.844 -03:00 [INF] End processing HTTP request after 12.7157ms - 200
+2026-06-10 13:54:59.902 -03:00 [INF] HTTP POST /api/Notifications/send responded 201 in 73.6979 ms
+2026-06-10 13:55:32.669 -03:00 [ERR] HTTP GET /api/Notifications/3cd48736-d3f2-4ab8-ba79-54cda3bcdd0d responded 500 in 45.4295 ms
+2026-06-10 13:59:36.913 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 41.9357 ms
+2026-06-10 13:59:37.442 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 1.3548 ms
+2026-06-10 13:59:37.447 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 7.1748 ms
+2026-06-10 13:59:37.447 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 7.1275 ms
+2026-06-10 13:59:37.448 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 7.5637 ms
+2026-06-10 13:59:37.453 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 11.6858 ms
+2026-06-10 13:59:37.650 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 53.5566 ms
+2026-06-10 13:59:49.620 -03:00 [INF] HTTP GET /api/Notifications/3cd48736-d3f2-4ab8-ba79-54cda3bcdd0d responded 200 in 93.8153 ms
