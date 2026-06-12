@@ -30,7 +30,6 @@ namespace Users.API.DTOS
         /// Contraseña del usuario
         /// </summary>
         [Required(ErrorMessage = "La contraseña es obligatoria.")]
-        [MinLength(6, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.")]
         public string Password { get; set; } = string.Empty;
     }
 }

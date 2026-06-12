@@ -48,7 +48,7 @@ namespace Users.API.Controllers
         /// <response code="200">Autenticación exitosa.</response>
         /// <response code="400">Los datos del usuario son inválidos.</response>
         /// <response code="401">Credenciales incorrectas.</response>
-        /// <response code="403">Usuario bloqueado por intentos fallidos o detección de fraude.</response>
+        /// <response code="403">Usuario bloqueado por intentos fallidos.</response>
         /// <response code="500">Error interno al procesar el usuario.</response>
         [HttpPost("login")]
         [ProducesResponseType(typeof(UserResponseDTO), StatusCodes.Status200OK)]
