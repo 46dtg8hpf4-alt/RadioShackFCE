@@ -12,12 +12,6 @@ namespace Users.API.Extensions
                 .AddCheck<SqliteHealthCheck>("sqlite-db", tags: ["database", "ready"])
                 .AddCheck<ApiStatusCheck>("api-status", tags: ["api", "live", "ready"]);
 
-            services.AddHealthChecksUI(setup =>
-            {
-                setup.SetEvaluationTimeInSeconds(600); // evalúa cada 10 minutos
-                setup.AddHealthCheckEndpoint("Users API Liveness", "/health/live");
-                setup.AddHealthCheckEndpoint("Users API Readiness", "/health/ready");
-            }).AddInMemoryStorage();
         }
 
         public static void MapAppHealthChecks(this WebApplication app)
@@ -39,7 +33,6 @@ namespace Users.API.Extensions
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
 
-            app.MapHealthChecksUI(setup => setup.UIPath = "/health-ui");
         }
     }
 }

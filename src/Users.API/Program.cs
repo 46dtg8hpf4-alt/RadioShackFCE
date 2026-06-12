@@ -6,7 +6,6 @@ using Serilog;
 using Serilog.Events;
 
 using System.Reflection;
-using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -81,18 +80,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseSerilogRequestLogging(options =>
-{
-    options.GetLevel = (httpContext, _, ex) =>
-        (ex != null) ? LogEventLevel.Error :
-        (httpContext.Request.Path.StartsWithSegments("/health"))
-            ? LogEventLevel.Verbose : LogEventLevel.Information;
-});
+app.UseAppMiddlewares();
 
 app.UseHttpsRedirection();
 
 app.UseExceptionHandler();
 app.MapControllers();
-app.MapAppHealthChecks();
 
 app.Run();

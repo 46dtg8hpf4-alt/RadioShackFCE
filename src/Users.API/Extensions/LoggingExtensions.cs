@@ -12,13 +12,13 @@ namespace Users.API.Extensions
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-                .MinimumLevel.Override("Microsoft.AspNetCore.Hosting.Diagnostics", LogEventLevel.Information)
+                .MinimumLevel.Override("System", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
                 .Enrich.FromLogContext()
-                // CONSOLA: solo errores
+                // CONSOLA: Muestra toda la info normal y de inicio
                 .WriteTo.Logger(lc => lc
-                    .Filter.ByIncludingOnly(le => le.Level >= LogEventLevel.Error)
                     .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}"))
-                // ARCHIVO: solo requests HTTP (sin health ni swagger)
+                // ARCHIVO: solo requests HTTP (sin /health ni /swagger)
                 .WriteTo.Logger(lc => lc
                     .Filter.ByIncludingOnly(le => {
                         var esSerilogMiddleware = Matching.FromSource("Serilog.AspNetCore.RequestLoggingMiddleware")(le);
