@@ -66,3 +66,20 @@
 2026-06-12 15:59:58.674 -03:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 0.8916 ms
 2026-06-12 15:59:58.752 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 83.7980 ms
 2026-06-12 16:09:36.056 -03:00 [INF] Application is shutting down...
+2026-06-12 16:59:44.349 -03:00 [INF] Now listening on: http://localhost:5151
+2026-06-12 16:59:44.400 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-12 16:59:44.401 -03:00 [INF] Hosting environment: Development
+2026-06-12 16:59:44.403 -03:00 [INF] Content root path: C:\Users\ivanm\Documents\RadioShackFCE - test antigravity\src\Products.API
+2026-06-12 17:00:00.576 -03:00 [INF] HTTP GET / responded 404 in 20.0252 ms
+2026-06-12 17:00:18.505 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 59.5754 ms
+2026-06-12 17:00:18.553 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 14.7665 ms
+2026-06-12 17:00:18.559 -03:00 [INF] HTTP GET /swagger/index.css responded 200 in 0.4733 ms
+2026-06-12 17:00:18.578 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 18.4354 ms
+2026-06-12 17:00:18.586 -03:00 [INF] HTTP GET /swagger/index.js responded 200 in 5.6492 ms
+2026-06-12 17:00:18.588 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 7.6468 ms
+2026-06-12 17:00:18.812 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 95.5142 ms
+2026-06-12 17:10:01.352 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 77.5243 ms
+2026-06-12 17:10:08.586 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 1.5350 ms
+2026-06-12 17:12:50.615 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 1.0146 ms
+2026-06-12 17:13:04.764 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 0.7888 ms
+2026-06-12 17:18:13.564 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 2.1834 ms

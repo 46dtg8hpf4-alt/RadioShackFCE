@@ -18,3 +18,4 @@
 2026-06-12 15:29:40 | POST | /api/orders | 422
 2026-06-12 15:35:49 | GET | /favicon.ico | 404
 2026-06-12 16:10:49 | GET | / | 404
+{"Timestamp":"2026-06-12T17:00:28.8870581-03:00","Level":"Warning","MessageTemplate":"HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms","TraceId":"a83889514d42f63c9dd1883c16f89bbd","SpanId":"e4d816280d030fa6","Properties":{"RequestMethod":"GET","RequestPath":"/","StatusCode":404,"Elapsed":1.9515,"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","CorrelationId":"9d757f69-c802-430f-9f81-ade6bb4439b9","RequestId":"0HNM8NKJ8A6F7:00000001","ConnectionId":"0HNM8NKJ8A6F7","Service":"Orders.API"},"Renderings":{"Elapsed":[{"Format":"0.0000","Rendering":"1.9515"}]}}

@@ -4,7 +4,7 @@ using HealthChecks.UI.Client;
 using Serilog;
 using Serilog.Events;
 
-namespace Orders.API.Extensions
+namespace Cart.API.Extensions
 {
     public static class MiddlewareExtensions
     {

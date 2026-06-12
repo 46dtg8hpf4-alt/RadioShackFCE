@@ -2,7 +2,7 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Filters;
 
-namespace Orders.API.Extensions
+namespace Cart.API.Extensions
 {
     public static class LoggingExtensions
     {
@@ -15,8 +15,7 @@ namespace Orders.API.Extensions
                 .MinimumLevel.Override("Microsoft.AspNetCore.Hosting.Diagnostics", LogEventLevel.Information)
                 .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
                 .Enrich.FromLogContext()
-                // agrego withproperty para diferenciar apis en el log.
-                .Enrich.WithProperty("Service", "Orders.API")
+                .Enrich.WithProperty("Service", "Cart.API")
                 
                 // CONSOLA: solo errores y mensajes de inicio del servidor
                 .WriteTo.Logger(lc => lc
