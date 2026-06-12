@@ -51,7 +51,7 @@ namespace Products.API.Controllers
 
         // GET PRODUCT BY ID
         [HttpGet("{id}")]
-        public ActionResult<ProductResponse> GetProductById(int id)
+        public ActionResult<ProductResponse> GetProductById(Guid id)
         {
             // Buscar producto usando service
             Product foundProduct = productService.GetProductById(id);
@@ -124,7 +124,7 @@ namespace Products.API.Controllers
         // UPDATE PRODUCT
         [HttpPut("{id}")]
         public ActionResult<Product> UpdateProduct(
-            int id,
+            Guid id,
             UpdateProductRequest request)
         {
             // Convertir DTO a Product
@@ -163,7 +163,7 @@ namespace Products.API.Controllers
 
         // DELETE PRODUCT
         [HttpDelete("{id}")]
-        public ActionResult DeleteProduct(int id)
+        public ActionResult DeleteProduct(Guid id)
         {
             // Eliminar producto usando service
             bool deleted = productService.DeleteProduct(id);

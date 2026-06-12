@@ -1,0 +1,85 @@
+2026-06-12 15:07:24.570 -03:00 [INF] HTTP GET /api/products/3fa85f64-5717-4562-b3fc-2c963f66afa6 responded 404 in 68.3768 ms
+2026-06-12 15:10:52.010 -03:00 [INF] Now listening on: http://localhost:5151
+2026-06-12 15:10:52.046 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-12 15:10:52.048 -03:00 [INF] Hosting environment: Development
+2026-06-12 15:10:52.049 -03:00 [INF] Content root path: C:\Users\ivanm\Documents\RadioShackFCE - test antigravity\src\Products.API
+2026-06-12 15:12:17.176 -03:00 [INF] HTTP GET / responded 404 in 18.5152 ms
+2026-06-12 15:12:39.348 -03:00 [INF] HTTP GET / responded 404 in 1.7290 ms
+2026-06-12 15:13:18.535 -03:00 [INF] HTTP GET / responded 404 in 1.0719 ms
+2026-06-12 15:13:49.665 -03:00 [INF] HTTP GET / responded 404 in 0.1039 ms
+2026-06-12 15:14:27.032 -03:00 [INF] Application is shutting down...
+2026-06-12 15:14:50.909 -03:00 [INF] Now listening on: http://localhost:5151
+2026-06-12 15:14:50.941 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-12 15:14:50.942 -03:00 [INF] Hosting environment: Development
+2026-06-12 15:14:50.943 -03:00 [INF] Content root path: C:\Users\ivanm\Documents\RadioShackFCE - test antigravity\src\Products.API
+2026-06-12 15:14:53.262 -03:00 [INF] HTTP GET / responded 404 in 15.4256 ms
+2026-06-12 15:15:08.730 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 54.5696 ms
+2026-06-12 15:15:08.773 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 13.9813 ms
+2026-06-12 15:15:08.776 -03:00 [INF] HTTP GET /swagger/index.css responded 200 in 0.3540 ms
+2026-06-12 15:15:08.781 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 4.0612 ms
+2026-06-12 15:15:08.795 -03:00 [INF] HTTP GET /swagger/index.js responded 200 in 0.5956 ms
+2026-06-12 15:15:08.797 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 19.6446 ms
+2026-06-12 15:15:08.938 -03:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 0.8163 ms
+2026-06-12 15:15:09.025 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 100.2990 ms
+2026-06-12 15:15:12.143 -03:00 [INF] Application is shutting down...
+2026-06-12 15:15:39.250 -03:00 [INF] Now listening on: http://localhost:5151
+2026-06-12 15:15:39.289 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-12 15:15:39.291 -03:00 [INF] Hosting environment: Development
+2026-06-12 15:15:39.293 -03:00 [INF] Content root path: C:\Users\ivanm\Documents\RadioShackFCE - test antigravity\src\Products.API
+2026-06-12 15:15:56.213 -03:00 [INF] HTTP GET / responded 404 in 14.5023 ms
+2026-06-12 15:16:05.710 -03:00 [INF] HTTP GET /swagger/index.html responded 304 in 55.4958 ms
+2026-06-12 15:16:05.751 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 8.3843 ms
+2026-06-12 15:16:05.759 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 0.2828 ms
+2026-06-12 15:16:05.764 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 3.5785 ms
+2026-06-12 15:16:05.766 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 6.7472 ms
+2026-06-12 15:16:05.777 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.4855 ms
+2026-06-12 15:16:06.003 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 91.0102 ms
+2026-06-12 15:16:20.919 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.5958 ms
+2026-06-12 15:16:20.950 -03:00 [INF] HTTP GET /swagger/index.css responded 200 in 1.8456 ms
+2026-06-12 15:16:20.950 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 1.9730 ms
+2026-06-12 15:16:20.951 -03:00 [INF] HTTP GET /swagger/index.js responded 200 in 0.3835 ms
+2026-06-12 15:16:20.959 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 8.6593 ms
+2026-06-12 15:16:20.969 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 18.7043 ms
+2026-06-12 15:16:21.069 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 3.8831 ms
+2026-06-12 15:16:21.070 -03:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 1.1724 ms
+2026-06-12 15:18:06.574 -03:00 [INF] HTTP POST /api/Products responded 201 in 97.0508 ms
+2026-06-12 15:18:46.865 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 7.8161 ms
+2026-06-12 15:18:56.857 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 0.9262 ms
+2026-06-12 15:27:43.256 -03:00 [INF] HTTP GET /api/products/ee46d199-e77b-4c1d-9fb6-46dc7739838d responded 404 in 5.7968 ms
+2026-06-12 15:29:22.003 -03:00 [INF] HTTP GET /api/products/ee46d199-e77b-4c1d-9fb6-46dc7739838d responded 404 in 0.5560 ms
+2026-06-12 15:29:40.151 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 0.8365 ms
+2026-06-12 15:46:16.640 -03:00 [INF] Application is shutting down...
+2026-06-12 15:46:52.427 -03:00 [INF] Now listening on: http://localhost:5151
+2026-06-12 15:46:52.467 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-12 15:46:52.468 -03:00 [INF] Hosting environment: Development
+2026-06-12 15:46:52.470 -03:00 [INF] Content root path: C:\Users\ivanm\Documents\RadioShackFCE - test antigravity\src\Products.API
+2026-06-12 15:59:40.319 -03:00 [INF] Now listening on: http://localhost:5151
+2026-06-12 15:59:40.376 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-12 15:59:40.378 -03:00 [INF] Hosting environment: Development
+2026-06-12 15:59:40.381 -03:00 [INF] Content root path: C:\Users\ivanm\Documents\RadioShackFCE - test antigravity\src\Products.API
+2026-06-12 15:59:58.477 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 60.0611 ms
+2026-06-12 15:59:58.524 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 15.0273 ms
+2026-06-12 15:59:58.524 -03:00 [INF] HTTP GET /swagger/index.css responded 200 in 14.9548 ms
+2026-06-12 15:59:58.534 -03:00 [INF] HTTP GET /swagger/index.js responded 200 in 5.1941 ms
+2026-06-12 15:59:58.537 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 27.4455 ms
+2026-06-12 15:59:58.537 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 7.4995 ms
+2026-06-12 15:59:58.674 -03:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 0.8916 ms
+2026-06-12 15:59:58.752 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 83.7980 ms
+2026-06-12 16:09:36.056 -03:00 [INF] Application is shutting down...
+2026-06-12 16:59:44.349 -03:00 [INF] Now listening on: http://localhost:5151
+2026-06-12 16:59:44.400 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-12 16:59:44.401 -03:00 [INF] Hosting environment: Development
+2026-06-12 16:59:44.403 -03:00 [INF] Content root path: C:\Users\ivanm\Documents\RadioShackFCE - test antigravity\src\Products.API
+2026-06-12 17:00:00.576 -03:00 [INF] HTTP GET / responded 404 in 20.0252 ms
+2026-06-12 17:00:18.505 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 59.5754 ms
+2026-06-12 17:00:18.553 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 14.7665 ms
+2026-06-12 17:00:18.559 -03:00 [INF] HTTP GET /swagger/index.css responded 200 in 0.4733 ms
+2026-06-12 17:00:18.578 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 18.4354 ms
+2026-06-12 17:00:18.586 -03:00 [INF] HTTP GET /swagger/index.js responded 200 in 5.6492 ms
+2026-06-12 17:00:18.588 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 7.6468 ms
+2026-06-12 17:00:18.812 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 95.5142 ms
+2026-06-12 17:10:01.352 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 77.5243 ms
+2026-06-12 17:10:08.586 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 1.5350 ms
+2026-06-12 17:12:50.615 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 1.0146 ms
+2026-06-12 17:13:04.764 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 0.7888 ms
+2026-06-12 17:18:13.564 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 2.1834 ms

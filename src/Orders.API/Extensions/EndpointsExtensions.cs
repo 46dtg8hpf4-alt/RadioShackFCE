@@ -14,7 +14,11 @@ namespace Orders.API.Extensions
             {
                 var orders = await repo.GetAllAsync(usuarioId);
                 return Results.Ok(orders);
-            });
+            })
+            .WithTags("Orders")
+            .WithSummary("Listar órdenes (filtro por usuarioId)")
+            .Produces<IEnumerable<Order>>(StatusCodes.Status200OK)
+            .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError);
 
             //Segunda api para pedir orders por orderId
             app.MapGet("/api/orders/{id:guid}", async (Guid id, OrderRepository repo) =>
@@ -27,10 +31,31 @@ namespace Orders.API.Extensions
                 }
 
                 return Results.Ok(orders);
-            });
+            })
+            .WithTags("Orders")
+            .WithSummary("Obtener detalle de una orden")
+            .Produces<Order>(StatusCodes.Status200OK)
+            .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+            .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError);
 
-            //Tercer endpoint para crear una orden con cantidad y calcula total(fijando un precio para su prueba).
-            app.MapPost("/api/orders", async (CreateOrderRequest req, OrderRepository repo) =>
+            // Endpoint para verificar si un producto tiene órdenes activas.
+            // Será utilizado por Products API antes de permitir eliminar un producto (PRD-004).        
+            app.MapGet(
+                "/api/orders/product/{productId:guid}",
+                async (Guid productId, OrderRepository repo) =>
+            {
+                bool hasOrders =
+                    await repo.ProductHasActiveOrders(productId);
+
+                return Results.Ok(hasOrders);
+            })
+            .WithTags("Orders")
+            .WithSummary("Verifica si un producto tiene órdenes activas")
+            .Produces<bool>(StatusCodes.Status200OK)
+            .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError);
+
+            //Tercer endpoint para crear una orden consultando Users.API y Products.API
+            app.MapPost("/api/orders", async (CreateOrderRequest req, OrderRepository repo, Orders.API.Clients.UsersApiClient usersApi, Orders.API.Clients.ProductsApiClient productsApi) =>
             {
                 if (req.Items == null || !req.Items.Any())
                 {
@@ -42,16 +67,36 @@ namespace Orders.API.Extensions
                     throw new ValidationException ("ORD-002", "Los datos de la orden son inválidos");
                 }
 
-                decimal precioSimulado = 1500.00m; //Esto es para probarlo en swagger y que me de un total
-
-                var orderItems = req.Items.Select(i => new OrderItem
+                if (!await usersApi.UserExistsAsync(req.usuarioId))
                 {
-                    ProductoId = i.ProductoId,
-                    Cantidad = i.Cantidad,
-                    PrecioUnitario = precioSimulado,
-                }).ToList();
+                    throw new NotFoundException("ORD-003", "Usuario no encontrado al crear la orden.");
+                }
 
-                decimal totalCalculado = orderItems.Sum(i => i.Cantidad * i.PrecioUnitario);
+                var orderItems = new List<OrderItem>();
+                decimal totalCalculado = 0;
+
+                foreach (var item in req.Items)
+                {
+                    var product = await productsApi.GetProductAsync(item.ProductoId);
+                    if (product == null)
+                    {
+                        throw new NotFoundException("ORD-004", "Producto no encontrado al crear la orden.");
+                    }
+
+                    if (item.Cantidad > product.Stock)
+                    {
+                        throw new BusinessRuleException("ORD-005", $"Stock insuficiente para '{product.Nombre}'. Disponible: {product.Stock}, solicitado: {item.Cantidad}.");
+                    }
+
+                    orderItems.Add(new OrderItem
+                    {
+                        ProductoId = item.ProductoId,
+                        Cantidad = item.Cantidad,
+                        PrecioUnitario = product.Precio
+                    });
+
+                    totalCalculado += item.Cantidad * product.Precio;
+                }
 
                 var nuevaOrder = new Order
                 {
@@ -61,13 +106,20 @@ namespace Orders.API.Extensions
                     Total = totalCalculado,
                     Estado = "Pendiente",
                     FechaCreacion = DateTime.Now,
-
                 };
 
                 await repo.CreateAsync(nuevaOrder);
 
                 return Results.Created($"/api/orders/{nuevaOrder.Id}", nuevaOrder);
-            });
+            })
+            .WithTags("Orders")
+            .WithSummary("Crear nueva orden")
+            .Produces<Order>(StatusCodes.Status201Created)
+            .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+            .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+            .Produces<ErrorResponse>(StatusCodes.Status409Conflict)
+            .Produces<ErrorResponse>(StatusCodes.Status422UnprocessableEntity)
+            .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError);
 
             app.MapPut("/api/orders/{id:guid}/status", async (Guid id, UpdateOrderStatusRequest req, OrderRepository repo) =>
             {
@@ -94,7 +146,14 @@ namespace Orders.API.Extensions
 
                 return Results.Ok(response);
 
-            });
+            })
+            .WithTags("Orders")
+            .WithSummary("Actualizar estado de la orden")
+            .Produces<UpdateOrderStatusResponse>(StatusCodes.Status200OK)
+            .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+            .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+            .Produces<ErrorResponse>(StatusCodes.Status409Conflict)
+            .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError);
 
         }
     }
