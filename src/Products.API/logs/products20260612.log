@@ -83,3 +83,33 @@
 2026-06-12 17:12:50.615 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 1.0146 ms
 2026-06-12 17:13:04.764 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 0.7888 ms
 2026-06-12 17:18:13.564 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 2.1834 ms
+2026-06-12 18:05:32.972 -03:00 [INF] Now listening on: http://localhost:5151
+2026-06-12 18:05:33.021 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-12 18:05:33.023 -03:00 [INF] Hosting environment: Development
+2026-06-12 18:05:33.024 -03:00 [INF] Content root path: C:\Users\ivanm\Documents\RadioShackFCE - test antigravity\src\Products.API
+2026-06-12 18:05:35.208 -03:00 [INF] HTTP GET / responded 404 in 20.8105 ms
+2026-06-12 18:05:40.201 -03:00 [INF] HTTP GET /swagger/index.html responded 304 in 64.4999 ms
+2026-06-12 18:05:40.256 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 14.0236 ms
+2026-06-12 18:05:40.263 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 0.4433 ms
+2026-06-12 18:05:40.285 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.8087 ms
+2026-06-12 18:05:40.290 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 5.8359 ms
+2026-06-12 18:05:40.292 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 29.7151 ms
+2026-06-12 18:05:40.537 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 102.8993 ms
+2026-06-12 18:06:41.449 -03:00 [INF] Application is shutting down...
+2026-06-12 18:10:42.966 -03:00 [INF] Now listening on: http://localhost:5151
+2026-06-12 18:10:43.008 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-12 18:10:43.010 -03:00 [INF] Hosting environment: Development
+2026-06-12 18:10:43.011 -03:00 [INF] Content root path: C:\Users\ivanm\Documents\RadioShackFCE - test antigravity\src\Products.API
+2026-06-12 18:11:39.356 -03:00 [INF] HTTP GET / responded 404 in 16.8084 ms
+2026-06-12 18:12:10.942 -03:00 [INF] HTTP GET / responded 404 in 3.2582 ms
+2026-06-12 18:12:14.310 -03:00 [INF] HTTP GET /swagger/index.html responded 304 in 56.2081 ms
+2026-06-12 18:12:14.331 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 304 in 12.0486 ms
+2026-06-12 18:12:14.331 -03:00 [INF] HTTP GET /swagger/index.css responded 304 in 12.0200 ms
+2026-06-12 18:12:14.331 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 304 in 11.0646 ms
+2026-06-12 18:12:14.369 -03:00 [INF] HTTP GET /swagger/index.js responded 304 in 0.3695 ms
+2026-06-12 18:12:14.369 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 304 in 4.7344 ms
+2026-06-12 18:12:14.502 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 85.6564 ms
+2026-06-12 18:16:46.368 -03:00 [INF] HTTP GET /api/products/08776fc2-8ad2-4412-96e8-66ae25369998 responded 404 in 55.5879 ms
+2026-06-12 18:17:29.220 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 39.8909 ms
+2026-06-12 18:28:55.862 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 1.3915 ms
+2026-06-12 18:29:01.727 -03:00 [INF] HTTP GET /api/products/e2c5b493-1077-4a9e-b315-09fe36740910 responded 200 in 0.8292 ms

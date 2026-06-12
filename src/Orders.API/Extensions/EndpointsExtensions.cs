@@ -131,9 +131,14 @@ namespace Orders.API.Extensions
                     throw new NotFoundException("ORD-001", "La orden no fue encontrada");
                 }
 
+                if (req.Estado != "Pendiente" && req.Estado != "Entregada")
+                {
+                    throw new BusinessRuleException("ORD-006", "El estado de la orden no puede ser modificado. Debe ser 'Pendiente' o 'Entregada'.");
+                }
+
                 if (ordenExistente.Estado == "Entregada" && req.Estado == "Pendiente")
                 {
-                    throw new NotFoundException("ORD-006", "Una orden en estado 'Entregada' no puede volver a 'Pendiente'.");
+                    throw new BusinessRuleException("ORD-006", "El estado de la orden no puede ser modificado. Una orden 'Entregada' no puede volver a 'Pendiente'.");
                 }
 
                 await repo.UpdateStatusAsync(id, req.Estado);
