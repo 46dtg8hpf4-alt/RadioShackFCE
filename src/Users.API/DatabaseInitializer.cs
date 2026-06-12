@@ -9,7 +9,7 @@ namespace Users.API
 
         public DatabaseInitializer(IConfiguration config)
         {
-            _connectionString = config.GetConnectionString("DefaultConnection") ?? "Data Source=app.db";
+            _connectionString = config.GetConnectionString("DefaultConnection") ?? "Data Source=users.db";
         }
 
         public void Initialize()
