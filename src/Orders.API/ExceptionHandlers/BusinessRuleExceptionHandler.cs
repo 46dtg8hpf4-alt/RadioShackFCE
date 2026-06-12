@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics;
 using Orders.API.Exceptions;
 
 namespace Orders.API.ExceptionHandlers;
@@ -22,9 +22,8 @@ public class BusinessRuleExceptionHandler : IExceptionHandler
             typeUrl = "https://tools.ietf.org/html/rfc4918#section-11.2";
             titleText = "Unprocessable Entity";
             detailText = "No se puede procesar la solicitud.";
-        
         }
-        
+        else
         {
             statusCode = 409;
             typeUrl = "https://tools.ietf.org/html/rfc7231#section-6.5.9";
@@ -34,6 +33,8 @@ public class BusinessRuleExceptionHandler : IExceptionHandler
 
         context.Response.StatusCode = statusCode;
         
+        var correlationId = context.Items.TryGetValue("CorrelationId", out var id) ? id?.ToString() : null;
+
         await context.Response.WriteAsJsonAsync(new
         {
             type = typeUrl,
@@ -42,7 +43,8 @@ public class BusinessRuleExceptionHandler : IExceptionHandler
             detail = detailText,
             instance = context.Request.Path.Value,
             errorCode = ex.ErrorCode,
-            errorMessage = ex.Message
+            errorMessage = ex.Message,
+            correlationId = correlationId
         }, cancellationToken: cancellationToken);
 
         return true;

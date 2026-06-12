@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics;
 using Orders.API.Exceptions;
 
 namespace Orders.API.ExceptionHandlers;
@@ -11,6 +11,8 @@ public class NotFoundExceptionHandler : IExceptionHandler
 
         context.Response.StatusCode = 404;
 
+        var correlationId = context.Items.TryGetValue("CorrelationId", out var id) ? id?.ToString() : null;
+
         await context.Response.WriteAsJsonAsync(new
         {
             type = "https://tools.ietf.org/html/rfc7231#section-6.5.4",
@@ -19,7 +21,8 @@ public class NotFoundExceptionHandler : IExceptionHandler
             detail = "El recurso solicitado no fue encontrado.",
             instance = context.Request.Path.Value,
             errorCode = ex.ErrorCode,
-            errorMessage = ex.Message
+            errorMessage = ex.Message,
+            correlationId = correlationId
         }, cancellationToken: cancellationToken);
 
         return true;

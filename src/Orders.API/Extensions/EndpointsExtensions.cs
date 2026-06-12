@@ -41,8 +41,8 @@ namespace Orders.API.Extensions
                 return Results.Ok(hasOrders);
             });
 
-            //Tercer endpoint para crear una orden con cantidad y calcula total(fijando un precio para su prueba).
-            app.MapPost("/api/orders", async (CreateOrderRequest req, OrderRepository repo) =>
+            //Tercer endpoint para crear una orden consultando Users.API y Products.API
+            app.MapPost("/api/orders", async (CreateOrderRequest req, OrderRepository repo, Orders.API.Clients.UsersApiClient usersApi, Orders.API.Clients.ProductsApiClient productsApi) =>
             {
                 if (req.Items == null || !req.Items.Any())
                 {
@@ -54,16 +54,36 @@ namespace Orders.API.Extensions
                     throw new ValidationException ("ORD-002", "Los datos de la orden son inválidos");
                 }
 
-                decimal precioSimulado = 1500.00m; //Esto es para probarlo en swagger y que me de un total
-
-                var orderItems = req.Items.Select(i => new OrderItem
+                if (!await usersApi.UserExistsAsync(req.usuarioId))
                 {
-                    ProductoId = i.ProductoId,
-                    Cantidad = i.Cantidad,
-                    PrecioUnitario = precioSimulado,
-                }).ToList();
+                    throw new NotFoundException("ORD-003", "Usuario no encontrado al crear la orden.");
+                }
 
-                decimal totalCalculado = orderItems.Sum(i => i.Cantidad * i.PrecioUnitario);
+                var orderItems = new List<OrderItem>();
+                decimal totalCalculado = 0;
+
+                foreach (var item in req.Items)
+                {
+                    var product = await productsApi.GetProductAsync(item.ProductoId);
+                    if (product == null)
+                    {
+                        throw new NotFoundException("ORD-004", "Producto no encontrado al crear la orden.");
+                    }
+
+                    if (item.Cantidad > product.Stock)
+                    {
+                        throw new BusinessRuleException("ORD-005", $"Stock insuficiente para '{product.Nombre}'. Disponible: {product.Stock}, solicitado: {item.Cantidad}.");
+                    }
+
+                    orderItems.Add(new OrderItem
+                    {
+                        ProductoId = item.ProductoId,
+                        Cantidad = item.Cantidad,
+                        PrecioUnitario = product.Precio
+                    });
+
+                    totalCalculado += item.Cantidad * product.Precio;
+                }
 
                 var nuevaOrder = new Order
                 {
@@ -73,7 +93,6 @@ namespace Orders.API.Extensions
                     Total = totalCalculado,
                     Estado = "Pendiente",
                     FechaCreacion = DateTime.Now,
-
                 };
 
                 await repo.CreateAsync(nuevaOrder);

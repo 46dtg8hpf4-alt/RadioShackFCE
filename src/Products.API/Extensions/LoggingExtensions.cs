@@ -14,6 +14,9 @@ namespace Products.API.Extensions
                 .MinimumLevel.Override(
                     "Microsoft",
                     LogEventLevel.Warning)
+                .MinimumLevel.Override(
+                    "Microsoft.Hosting.Lifetime",
+                    LogEventLevel.Information)
 
                 .Enrich.FromLogContext()
 

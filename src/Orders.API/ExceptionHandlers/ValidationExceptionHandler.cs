@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics;
 using Orders.API.Exceptions;
 
 namespace Orders.API.ExceptionHandlers;
@@ -11,6 +11,8 @@ public class ValidationExceptionHandler : IExceptionHandler
 
         context.Response.StatusCode = 400; 
 
+        var correlationId = context.Items.TryGetValue("CorrelationId", out var id) ? id?.ToString() : null;
+
         await context.Response.WriteAsJsonAsync(new
         {
             type = "https://tools.ietf.org/html/rfc7231#section-6.5.1",
@@ -19,7 +21,8 @@ public class ValidationExceptionHandler : IExceptionHandler
             detail = "Ocurrió un error de validación en los datos de entrada.",
             instance = context.Request.Path.Value,
             errorCode = ex.ErrorCode, 
-            errorMessage = ex.Message 
+            errorMessage = ex.Message,
+            correlationId = correlationId
         }, cancellationToken: cancellationToken);
 
         return true;

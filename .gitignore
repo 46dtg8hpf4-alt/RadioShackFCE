@@ -4,3 +4,5 @@ obj/
 .DS_Store
 /.vs
 /src/Orders.API/orders.db
+
+run-all.ps1
