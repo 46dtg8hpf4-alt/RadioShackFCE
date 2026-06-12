@@ -19,10 +19,10 @@ namespace Notifications.API.ExceptionHandlers
             error.Type = "https://tools.ietf.org/html/rfc7231#section-6.6.1";
             error.Title = "Internal Server Error";
             error.Status = 500;
-            error.Detail = "Error inesperado en servicio o persistencia.";
+            error.Detail = "Error inesperado en el servicio de notificaciones.";
             error.Instance = httpContext.Request.Path;
-            error.ErrorCode = "PRD-005";
-            error.ErrorMessage = "Error interno al procesar el producto.";
+            error.ErrorCode = "NTF-004";
+            error.ErrorMessage = "Error interno al procesar la notificación.";
 
             await httpContext.Response.WriteAsJsonAsync(error);
 
