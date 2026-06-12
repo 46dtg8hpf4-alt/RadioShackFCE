@@ -16,6 +16,7 @@ public partial class Program
 
         //base de datos
         builder.Services.AddScoped<OrderRepository>();
+        builder.Services.AddTransient<DatabaseInitializer>();
         
         // Servicios consolidados (Health Checks y Swagger) desde el PDF Componentes_MiniApi
         builder.Services.AddAppServices();
@@ -41,6 +42,11 @@ public partial class Program
         builder.Services.AddProblemDetails();
 
         var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            scope.ServiceProvider.GetRequiredService<DatabaseInitializer>().Initialize();
+        }
 
         // Correlation ID and Serilog Request Logging, and Health Checks map endpoints
         app.UseMiddleware<Orders.API.Middleware.CorrelationIdMiddleware>();

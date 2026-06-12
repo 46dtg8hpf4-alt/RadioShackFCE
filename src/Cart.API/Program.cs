@@ -16,6 +16,7 @@ public partial class Program
 
         // inyecto el repo de la db
         builder.Services.AddScoped<CartRepository>();
+        builder.Services.AddTransient<DatabaseInitializer>();
 
         // meto health checks y swagger q saque del pdf
         builder.Services.AddAppServices();
@@ -36,6 +37,11 @@ public partial class Program
         builder.Services.AddProblemDetails();
 
         var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            scope.ServiceProvider.GetRequiredService<DatabaseInitializer>().Initialize();
+        }
 
         // meto los middlewares q piden en el tp
         app.UseMiddleware<Cart.API.Middleware.CorrelationIdMiddleware>();
