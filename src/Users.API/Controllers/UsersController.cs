@@ -41,7 +41,7 @@ namespace Users.API.Controllers
         }
 
         /// <summary>
-        /// Autenticar usuario
+        /// Logging Usuario
         /// </summary>
         /// <param name="request">Credenciales del usuario (email y password).</param>
         /// <returns>Los datos del usuario autenticado.</returns>
