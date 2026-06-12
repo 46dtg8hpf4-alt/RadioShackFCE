@@ -14,15 +14,17 @@ namespace Users.API.ExceptionHandlers
 
             int statusCode = ex.ErrorCode switch
             {
-                "USR-001" => StatusCodes.Status409Conflict,       
-                "USR-002" => StatusCodes.Status400BadRequest,     
-                "USR-003" => StatusCodes.Status401Unauthorized,   
+                "USR-001" => StatusCodes.Status409Conflict,
+                "USR-002" => StatusCodes.Status400BadRequest,
+                "USR-003" => StatusCodes.Status401Unauthorized,
                 "USR-004" => StatusCodes.Status403Forbidden,
-                "USR-005" => StatusCodes.Status403Forbidden, 
+                "USR-005" => StatusCodes.Status403Forbidden,
                 _ => StatusCodes.Status400BadRequest
             };
 
             context.Response.StatusCode = statusCode;
+
+            var correlationId = context.Items["CorrelationId"]?.ToString();
 
             var errorResponse = new
             {
@@ -32,7 +34,8 @@ namespace Users.API.ExceptionHandlers
                 detail = "Ocurrió un error al procesar las reglas de negocio del usuario.",
                 instance = context.Request.Path.Value,
                 errorCode = ex.ErrorCode,
-                errorMessage = ex.Message
+                errorMessage = ex.Message,
+                correlationId = correlationId
             };
 
             await context.Response.WriteAsJsonAsync(errorResponse, cancellationToken);

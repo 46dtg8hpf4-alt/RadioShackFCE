@@ -14,7 +14,11 @@ namespace Orders.API.Extensions
             {
                 var orders = await repo.GetAllAsync(usuarioId);
                 return Results.Ok(orders);
-            });
+            })
+            .WithTags("Orders")
+            .WithSummary("Listar órdenes (filtro por usuarioId)")
+            .Produces<IEnumerable<Order>>(StatusCodes.Status200OK)
+            .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError);
 
             //Segunda api para pedir orders por orderId
             app.MapGet("/api/orders/{id:guid}", async (Guid id, OrderRepository repo) =>
@@ -27,7 +31,12 @@ namespace Orders.API.Extensions
                 }
 
                 return Results.Ok(orders);
-            });
+            })
+            .WithTags("Orders")
+            .WithSummary("Obtener detalle de una orden")
+            .Produces<Order>(StatusCodes.Status200OK)
+            .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+            .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError);
 
             // Endpoint para verificar si un producto tiene órdenes activas.
             // Será utilizado por Products API antes de permitir eliminar un producto (PRD-004).        
@@ -39,7 +48,11 @@ namespace Orders.API.Extensions
                     await repo.ProductHasActiveOrders(productId);
 
                 return Results.Ok(hasOrders);
-            });
+            })
+            .WithTags("Orders")
+            .WithSummary("Verifica si un producto tiene órdenes activas")
+            .Produces<bool>(StatusCodes.Status200OK)
+            .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError);
 
             //Tercer endpoint para crear una orden consultando Users.API y Products.API
             app.MapPost("/api/orders", async (CreateOrderRequest req, OrderRepository repo, Orders.API.Clients.UsersApiClient usersApi, Orders.API.Clients.ProductsApiClient productsApi) =>
@@ -98,7 +111,15 @@ namespace Orders.API.Extensions
                 await repo.CreateAsync(nuevaOrder);
 
                 return Results.Created($"/api/orders/{nuevaOrder.Id}", nuevaOrder);
-            });
+            })
+            .WithTags("Orders")
+            .WithSummary("Crear nueva orden")
+            .Produces<Order>(StatusCodes.Status201Created)
+            .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+            .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+            .Produces<ErrorResponse>(StatusCodes.Status409Conflict)
+            .Produces<ErrorResponse>(StatusCodes.Status422UnprocessableEntity)
+            .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError);
 
             app.MapPut("/api/orders/{id:guid}/status", async (Guid id, UpdateOrderStatusRequest req, OrderRepository repo) =>
             {
@@ -125,7 +146,14 @@ namespace Orders.API.Extensions
 
                 return Results.Ok(response);
 
-            });
+            })
+            .WithTags("Orders")
+            .WithSummary("Actualizar estado de la orden")
+            .Produces<UpdateOrderStatusResponse>(StatusCodes.Status200OK)
+            .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+            .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+            .Produces<ErrorResponse>(StatusCodes.Status409Conflict)
+            .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError);
 
         }
     }

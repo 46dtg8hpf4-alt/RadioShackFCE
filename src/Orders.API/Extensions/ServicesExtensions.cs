@@ -14,7 +14,7 @@ namespace Orders.API.Extensions
 
             services.AddHealthChecksUI(setup =>
             {
-                setup.SetEvaluationTimeInSeconds(600); // evalúa cada 10 minutos
+                setup.SetEvaluationTimeInSeconds(600); // cada 10 minutos
                 setup.AddHealthCheckEndpoint("OrdersApi", "/health");
             }).AddInMemoryStorage();
 

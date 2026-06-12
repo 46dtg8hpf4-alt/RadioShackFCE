@@ -53,3 +53,16 @@
 2026-06-12 15:46:52.467 -03:00 [INF] Application started. Press Ctrl+C to shut down.
 2026-06-12 15:46:52.468 -03:00 [INF] Hosting environment: Development
 2026-06-12 15:46:52.470 -03:00 [INF] Content root path: C:\Users\ivanm\Documents\RadioShackFCE - test antigravity\src\Products.API
+2026-06-12 15:59:40.319 -03:00 [INF] Now listening on: http://localhost:5151
+2026-06-12 15:59:40.376 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-12 15:59:40.378 -03:00 [INF] Hosting environment: Development
+2026-06-12 15:59:40.381 -03:00 [INF] Content root path: C:\Users\ivanm\Documents\RadioShackFCE - test antigravity\src\Products.API
+2026-06-12 15:59:58.477 -03:00 [INF] HTTP GET /swagger/index.html responded 200 in 60.0611 ms
+2026-06-12 15:59:58.524 -03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 15.0273 ms
+2026-06-12 15:59:58.524 -03:00 [INF] HTTP GET /swagger/index.css responded 200 in 14.9548 ms
+2026-06-12 15:59:58.534 -03:00 [INF] HTTP GET /swagger/index.js responded 200 in 5.1941 ms
+2026-06-12 15:59:58.537 -03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 27.4455 ms
+2026-06-12 15:59:58.537 -03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 7.4995 ms
+2026-06-12 15:59:58.674 -03:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 0.8916 ms
+2026-06-12 15:59:58.752 -03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 83.7980 ms
+2026-06-12 16:09:36.056 -03:00 [INF] Application is shutting down...
