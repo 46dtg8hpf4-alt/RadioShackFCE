@@ -24,7 +24,7 @@ namespace Users.API.Services
             var exists = await conn.ExecuteScalarAsync<int>("SELECT COUNT(1) FROM users WHERE Email = @Email", new { request.Email });
             if (exists > 0)
             {
-                throw new BusinessRuleException("USR-001", "El correo electrónico ya se encuentra registrado.");
+                throw new BusinessRuleException("USR-001", "El email ya esta registrado.");
             }
 
             string hashedPassword = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(request.Password));
@@ -95,11 +95,11 @@ namespace Users.API.Services
 
             if (!user.Activo && user.IntentosFallidos >= 3)
             {
-                throw new BusinessRuleException("USR-004", "Su cuenta fue bloqueada por superar el máximo de intentos fallidos. Contacte a soporte.");
+                throw new BusinessRuleException("USR-004", "Usuario bloqueado por demasiados intentos fallidos.");
             }
             else if (!user.Activo)
             {
-                throw new BusinessRuleException("USR-005", "Su cuenta fue suspendida por razones de seguridad. Contacte a soporte.");
+                throw new BusinessRuleException("USR-005", "Usuario bloqueado por detección de fraude.");
             }
 
             string hashedInputPassword = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(request.Password));

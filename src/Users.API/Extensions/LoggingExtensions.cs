@@ -15,9 +15,11 @@ namespace Users.API.Extensions
                 .MinimumLevel.Override("System", LogEventLevel.Warning)
                 .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
                 .Enrich.FromLogContext()
+
                 // CONSOLA: Muestra toda la info normal y de inicio
                 .WriteTo.Logger(lc => lc
                     .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}"))
+
                 // ARCHIVO: solo requests HTTP (sin /health ni /swagger)
                 .WriteTo.Logger(lc => lc
                     .Filter.ByIncludingOnly(le => {
