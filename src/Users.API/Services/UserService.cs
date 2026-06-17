@@ -112,7 +112,7 @@ namespace Users.API.Services
                 {
                     user.Activo = false;
                     await conn.ExecuteAsync("UPDATE users SET IntentosFallidos = @IntentosFallidos, Activo = 0 WHERE Id = @Id", new { IntentosFallidos = user.IntentosFallidos, Id = user.Id.ToString() });
-                    throw new BusinessRuleException("USR-004", "Usuario bloqueado por \r\ndemasiados intentos fallidos. ");
+                    throw new BusinessRuleException("USR-004", "Usuario bloqueado por demasiados intentos fallidos. ");
                 }
 
                 await conn.ExecuteAsync("UPDATE users SET IntentosFallidos = @IntentosFallidos WHERE Id = @Id", new { IntentosFallidos = user.IntentosFallidos, Id = user.Id.ToString() });
